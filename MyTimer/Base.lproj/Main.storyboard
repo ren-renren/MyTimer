@@ -15,14 +15,101 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="BDA-QA-dhD">
+                                <rect key="frame" x="0.0" y="88" width="390" height="756"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPI-8a-ezT">
+                                <rect key="frame" x="159.66666666666666" y="304" width="71" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCC-4E-RNG">
+                                <rect key="frame" x="45" y="452" width="140" height="140"/>
+                                <state key="normal" image="btn_start"/>
+                                <connections>
+                                    <action selector="startButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ca3-SQ-Lyr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFj-KQ-vrd">
+                                <rect key="frame" x="205" y="452" width="140" height="140"/>
+                                <state key="normal" image="btn_stop"/>
+                                <connections>
+                                    <action selector="stopButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xZ6-fi-wnI"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BDA-QA-dhD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3LR-x8-yiD"/>
+                            <constraint firstItem="BDA-QA-dhD" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="C5W-6o-oss"/>
+                            <constraint firstItem="RPI-8a-ezT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="EmB-Mx-eT4"/>
+                            <constraint firstItem="uCC-4E-RNG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-80" id="NpA-9d-Puh"/>
+                            <constraint firstItem="RPI-8a-ezT" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-100" id="Sri-be-VlP"/>
+                            <constraint firstItem="BDA-QA-dhD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UFo-mR-6jh"/>
+                            <constraint firstAttribute="bottom" secondItem="BDA-QA-dhD" secondAttribute="bottom" id="btr-FW-hw8"/>
+                            <constraint firstItem="bFj-KQ-vrd" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="qWw-zM-Wyy"/>
+                            <constraint firstItem="bFj-KQ-vrd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="80" id="vrK-Z1-CQs"/>
+                            <constraint firstItem="RPI-8a-ezT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xUV-2s-mrQ"/>
+                            <constraint firstItem="RPI-8a-ezT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="y11-ax-y5u"/>
+                            <constraint firstItem="uCC-4E-RNG" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="100" id="zq6-Z2-prn"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="tFc-6Y-BmG"/>
+                    <navigationItem key="navigationItem" id="tFc-6Y-BmG">
+                        <barButtonItem key="rightBarButtonItem" title="秒数設定" id="MTT-dg-nkp">
+                            <connections>
+                                <action selector="settingButtonAction:" destination="BYZ-38-t0r" id="LFW-x1-VUV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="countDownLabel" destination="RPI-8a-ezT" id="E4X-Iv-5Gy"/>
+                        <segue destination="rLi-Y1-uiR" kind="show" identifier="goSetting" id="95U-Ct-rl5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.8260869565217" y="76.339285714285708"/>
+            <point key="canvasLocation" x="1047.6923076923076" y="76.066350710900466"/>
+        </scene>
+        <!--Setting View Controller-->
+        <scene sceneID="5mA-8o-yfu">
+            <objects>
+                <viewController id="rLi-Y1-uiR" customClass="SettingViewController" customModule="MyTimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2d0-SL-76g">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQG-RG-3sm">
+                                <rect key="frame" x="0.0" y="88" width="390" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z1z-Ob-cv0">
+                                <rect key="frame" x="135" y="462" width="120" height="120"/>
+                                <state key="normal" image="btn_ decision"/>
+                                <connections>
+                                    <action selector="decisionButtonAction:" destination="rLi-Y1-uiR" eventType="touchUpInside" id="Z6t-7o-e9X"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MGZ-D0-jla"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="IQG-RG-3sm" firstAttribute="trailing" secondItem="MGZ-D0-jla" secondAttribute="trailing" id="GAc-84-qSd"/>
+                            <constraint firstItem="IQG-RG-3sm" firstAttribute="top" secondItem="MGZ-D0-jla" secondAttribute="top" id="KsB-LO-Cir"/>
+                            <constraint firstItem="IQG-RG-3sm" firstAttribute="leading" secondItem="MGZ-D0-jla" secondAttribute="leading" id="eKF-W9-WrH"/>
+                            <constraint firstItem="z1z-Ob-cv0" firstAttribute="centerY" secondItem="2d0-SL-76g" secondAttribute="centerY" constant="100" id="urQ-Dt-V6n"/>
+                            <constraint firstItem="z1z-Ob-cv0" firstAttribute="centerX" secondItem="2d0-SL-76g" secondAttribute="centerX" id="x4a-EW-r3v"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="u3q-OX-4er"/>
+                    <connections>
+                        <outlet property="timerSettingPicker" destination="IQG-RG-3sm" id="BCS-wb-1Sq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gb5-6X-m3u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1925" y="76"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9ma-6u-Vmg">
@@ -44,6 +131,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bg" width="750" height="1334"/>
+        <image name="btn_ decision" width="120" height="120"/>
+        <image name="btn_start" width="140" height="140"/>
+        <image name="btn_stop" width="140" height="140"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
