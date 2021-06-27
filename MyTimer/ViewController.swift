@@ -54,7 +54,7 @@ class ViewController: UIViewController {
 		//タイマーをスタート
 		timer = Timer.scheduledTimer(timeInterval: 1.0,
 									 target: self,
-									 selector: Selector(self.timeInterrupt(_:)),
+									 selector: #selector(self.timeInterrupt(_:)),
 									 userInfo: nil,
 									 repeats: true)
 	}
@@ -68,6 +68,8 @@ class ViewController: UIViewController {
 				nowTimer.invalidate()
 			}
 		}
+		
+	}
 		
 	//画面を更新する（戻り値：remainCount:残り時間）
 		func displayUpdate() -> Int {
@@ -84,7 +86,7 @@ class ViewController: UIViewController {
 			return remainCount
 		}
 		//経過時間の処理
-		func timeInterrupt(_ timer:Timer) {
+		@objc func timeInterrupt(_ timer:Timer) {
 
 			//count(経過時間)に+1していく
 			count += 1
@@ -94,17 +96,24 @@ class ViewController: UIViewController {
 				count = 0
 				//タイマー停止
 				timer.invalidate()
+				
+				//カスタマイズ編：ダイアログを作成
+				let alertController = UIAlertController(title: "終了", message: "タイマー終了です", preferredStyle: .alert)
+				//ダイアログに表示させるOKボタンを作成
+				let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+				//アクションの追加
+				alertController.addAction(defaultAction)
+				//ダイアログの表示
+				present(alertController, animated: true, completion: nil)
 		}
 	}
 	
 		//画面切り替えのタイミングで処理を行う
-		func viewDidAppear(_ animated: Bool) {
+		override func viewDidAppear(_ animated: Bool) {
 			//カウント（経過時間）をゼロにする
 			count = 0
 			//タイマーの表示を更新する
 			_ = displayUpdate()
 		}
 	
-}
-
 }
